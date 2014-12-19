@@ -1,51 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="inner-wrapper">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Attr1:</strong>
-  <%= @combination.attr1 %>
-</p>
-
-<p>
-  <strong>Attr2:</strong>
-  <%= @combination.attr2 %>
-</p>
-
-<p>
-  <strong>Attr3:</strong>
-  <%= @combination.attr3 %>
-</p>
-
-<p>
-  <strong>Expn:</strong>
-  <%= @combination.expn %>
-</p>
-
-<% @combination.clusters.each do |cluster| %>
 	<p>
-	  <strong>Val1:</strong>
-	  <%= cluster.val1 %>
+		<strong>Input: </strong>
+		<%= @combination.attr1 %>
+		<%= @combination.attr2 %>
+		<%= @combination.attr3 %>
 	</p>
 
 	<p>
-	  <strong>Val2:</strong>
-	  <%= cluster.val2 %>
+		<strong>Expenditure: </strong>
+		<%= @combination.expn %>
 	</p>
+	<br>
+	<% i = 0 %>
+	<% @combination.clusters.each do |cluster| %>
+		<% i += 1 %>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= "CLUSTER #{i}" %></h3>
+			</div>
+			<div class="panel-body">
+				<p>
+				  <strong><%= @combination.attr1.upcase %></strong>
+				  <%= print_val(cluster.val1) %>
+				</p>
 
-	<p>
-	  <strong>Val3:</strong>
-	  <%= cluster.val3 %>
-	</p>
+				<p>
+				  <strong><%= @combination.attr2.upcase %></strong>
+				  <%= print_val(cluster.val2) %>
+				</p>
 
-	<p>
-	  <strong>Expn val:</strong>
-	  <%= cluster.expn_val %>
-	</p>
+				<p>
+				  <strong><%= @combination.attr3.upcase %></strong>
+				  <%= print_val(cluster.val3) %>
+				</p>
 
-	<p>
-	  <strong>Combination:</strong>
-	  <%= cluster.combination %>
-	</p>
-<% end %>
+				<p>
+				  <strong><%= @combination.expn.upcase %></strong>
+				  <%= print_val(cluster.expn_val) %>
+				</p>
+			</div>
+		</div>
 
-<%= link_to 'Edit', edit_combination_path(@combination) %> |
-<%= link_to 'Back', combinations_path %>
+	<% end %>
+
+	<%= link_to 'Edit', edit_combination_path(@combination) %> |
+	<%= link_to 'Back', combinations_path %>
+
+</div>

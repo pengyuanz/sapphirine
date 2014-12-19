@@ -2,43 +2,89 @@
 
 <h1>Listing Combinations</h1>
 
-<form action="/redirect" method="post">
-  <input type="checkbox" name="attr[]" value="age">Age<br>
-  <input type="checkbox" name="attr[]" value="edu" checked="checked">Education<br>
-  <input type="checkbox" name="attr[]" value="income">Income<br>
-  <input type="checkbox" name="attr[]" value="occu">Occupation<br>
-  <input type="checkbox" name="attr[]" value="state">State<br>
-  <input type="checkbox" name="expn" value="car">Car<br>
+<form class="form-horizontal" action="/redirect" method="post">
+	<div class="form-group">
+		<label for="age-box" class="col-sm-2 control-label">Input</label>
+		<div id="input" class="col-sm-2" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" class="form-control" id="age-box" name="attr[]" onClick="return KeepCount()" value="age" checked="checked">Age<br>
+				</label>
+			</div>
 
-  <input type="submit" value="Submit">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="attr[]" onClick="return KeepCount()" value="edu" checked="checked">Education<br>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="attr[]" onClick="return KeepCount()" value="income" checked="checked">Income<br>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="attr[]" onClick="return KeepCount()" value="occu">Occupation<br>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="attr[]" onClick="return KeepCount()" value="state">State<br>
+				</label>
+			</div>
+		</div>
+		<label for="car-box" class="col-sm-2 control-label">Output</label>
+		<div class="col-sm-2">
+			<div class="radio">
+				<label>
+					<input type="radio" name="expn" value="car" checked="checked">Car<br>
+
+				</label>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary col-sm-2">Submit</button>
+	</div>
+	
+	
 </form>
 
-<table>
-  <thead>
-    <tr>
-      <th>Attr1</th>
-      <th>Attr2</th>
-      <th>Attr3</th>
-      <th>Expn</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @combinations.each do |combination| %>
-      <tr>
-        <td><%= combination.attr1 %></td>
-        <td><%= combination.attr2 %></td>
-        <td><%= combination.attr3 %></td>
-        <td><%= combination.expn %></td>
-        <td><%= link_to 'Show', combination %></td>
-        <td><%= link_to 'Edit', edit_combination_path(combination) %></td>
-        <td><%= link_to 'Destroy', combination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<table>
+	<thead>
+		<tr>
+			<th>Attr1</th>
+			<th>Attr2</th>
+			<th>Attr3</th>
+			<th>Expn</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @combinations.each do |combination| %>
+			<tr>
+				<td><%= combination.attr1 %></td>
+				<td><%= combination.attr2 %></td>
+				<td><%= combination.attr3 %></td>
+				<td><%= combination.expn %></td>
+				<td><%= link_to 'Show', combination %></td>
+				<td><%= link_to 'Edit', edit_combination_path(combination) %></td>
+				<td><%= link_to 'Destroy', combination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
 
 <%= link_to 'New Combination', new_combination_path %>
+<script type="text/javascript">
+
+	$('input[type=checkbox]').on('change', function (e) {
+	    if ($('input[type=checkbox]:checked').length > 3) {
+	        $(this).prop('checked', false);
+	        alert("allowed only 3");
+	    }
+	});
+
+</script>
