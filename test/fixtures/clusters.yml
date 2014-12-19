@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  val1: MyString
+  val2: MyString
+  val3: MyString
+  expn_val: MyString
+  combination_id: 
+
+two:
+  val1: MyString
+  val2: MyString
+  val3: MyString
+  expn_val: MyString
+  combination_id: 

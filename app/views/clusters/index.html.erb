@@ -1,2 +1,35 @@
-<h1>Clusters#index</h1>
-<p>Find me in app/views/clusters/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Clusters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Val1</th>
+      <th>Val2</th>
+      <th>Val3</th>
+      <th>Expn val</th>
+      <th>Combination</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clusters.each do |cluster| %>
+      <tr>
+        <td><%= cluster.val1 %></td>
+        <td><%= cluster.val2 %></td>
+        <td><%= cluster.val3 %></td>
+        <td><%= cluster.expn_val %></td>
+        <td><%= cluster.combination %></td>
+        <td><%= link_to 'Show', cluster %></td>
+        <td><%= link_to 'Edit', edit_cluster_path(cluster) %></td>
+        <td><%= link_to 'Destroy', cluster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cluster', new_cluster_path %>

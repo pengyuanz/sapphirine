@@ -1,0 +1,37 @@
+<%= form_for(@cluster) do |f| %>
+  <% if @cluster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cluster.errors.count, "error") %> prohibited this cluster from being saved:</h2>
+
+      <ul>
+      <% @cluster.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :val1 %><br>
+    <%= f.text_field :val1 %>
+  </div>
+  <div class="field">
+    <%= f.label :val2 %><br>
+    <%= f.text_field :val2 %>
+  </div>
+  <div class="field">
+    <%= f.label :val3 %><br>
+    <%= f.text_field :val3 %>
+  </div>
+  <div class="field">
+    <%= f.label :expn_val %><br>
+    <%= f.text_field :expn_val %>
+  </div>
+  <div class="field">
+    <%= f.label :combination_id %><br>
+    <%= f.text_field :combination_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

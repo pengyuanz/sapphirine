@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Combinations</h1>
+
+<form action="/redirect" method="post">
+  <input type="checkbox" name="attr[]" value="age">Age<br>
+  <input type="checkbox" name="attr[]" value="edu" checked="checked">Education<br>
+  <input type="checkbox" name="attr[]" value="income">Income<br>
+  <input type="checkbox" name="attr[]" value="occu">Occupation<br>
+  <input type="checkbox" name="attr[]" value="state">State<br>
+  <input type="checkbox" name="expn" value="car">Car<br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attr1</th>
+      <th>Attr2</th>
+      <th>Attr3</th>
+      <th>Expn</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @combinations.each do |combination| %>
+      <tr>
+        <td><%= combination.attr1 %></td>
+        <td><%= combination.attr2 %></td>
+        <td><%= combination.attr3 %></td>
+        <td><%= combination.expn %></td>
+        <td><%= link_to 'Show', combination %></td>
+        <td><%= link_to 'Edit', edit_combination_path(combination) %></td>
+        <td><%= link_to 'Destroy', combination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Combination', new_combination_path %>
